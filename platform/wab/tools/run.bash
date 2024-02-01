@@ -8,6 +8,11 @@ then debug_args=--inspect-brk=$debug_port
 else debug_args=
 fi
 
+if [[ $watch ]]
+then watch_args=--watch
+else watch=
+fi
+
 if [[ ! $MAX_HEAP_SIZE ]]
 then MAX_HEAP_SIZE="10000"
 fi
@@ -17,4 +22,4 @@ then NODE_OPTIONS="$NODE_OPTIONS --experimental-repl-await"
 fi
 
 #NQ_SQLJS=1 NODE_OPTIONS="--max-old-space-size=10000 $debug_args ${NODE_OPTIONS:-}" ts-node -r dotenv/config -T -P tsconfig.tools.json "$@"
-NQ_SQLJS=1 NODE_OPTIONS="--max-old-space-size=$MAX_HEAP_SIZE $debug_args ${NODE_OPTIONS:-}" node -r esbuild-register -r dotenv/config "$@"
+NQ_SQLJS=1 NODE_OPTIONS="--max-old-space-size=$MAX_HEAP_SIZE $debug_args ${NODE_OPTIONS:-}" node -r esbuild-register -r dotenv/config $watch_args "$@"

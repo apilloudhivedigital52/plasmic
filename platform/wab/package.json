@@ -42,6 +42,7 @@
     "eject": "react-scripts eject",
     "backend": "bash tools/backend-server.bash",
     "backend:debug": "debug=1 bash tools/backend-server.bash",
+    "backend:watch": "watch=1 bash tools/backend-server.bash",
     "gen:models": "npm run run-ts -- tools/gen-models.ts",
     "gen:component-metas": "npm run run-ts -- tools/gen-react-meta.ts",
     "start-backend": "pm2 start ts-node -i 1 --wait-ready --listen-timeout 19999 --kill-timeout 7999 -- -T -P tsconfig.tools.json src/wab/server/main.ts",
