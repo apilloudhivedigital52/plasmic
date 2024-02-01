@@ -3,6 +3,7 @@
 import { captureException } from "@sentry/node";
 import * as childProcess from "child_process";
 import "core-js";
+import dns from "dns";
 import * as fs from "fs";
 import http from "http";
 import * as path from "path";
@@ -21,6 +22,8 @@ import { Config } from "./config";
 import { startTsSvc } from "./TsSvc";
 
 export async function runAppServer(config: Config) {
+  dns.setDefaultResultOrder("ipv4first");
+
   const tsSvc = await startTsSvc();
 
   await ensureDbConnections(config.databaseUri, {
