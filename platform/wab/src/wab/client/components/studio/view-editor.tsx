@@ -45,6 +45,7 @@ import { PreviewCtx } from "@/wab/client/components/live/PreviewCtx";
 import { makeFrameSizeMenu } from "@/wab/client/components/menus/FrameSizeMenu";
 import { OmnibarOverlay } from "@/wab/client/components/omnibar/OmnibarOverlay";
 import { confirm } from "@/wab/client/components/quick-modals";
+import { MiddlePane } from "@/wab/client/components/sidebar-contents/MiddlePane";
 import { OldSettingsTab } from "@/wab/client/components/sidebar-tabs/old-settings-tab";
 import { SettingsTab } from "@/wab/client/components/sidebar-tabs/SettingsTab";
 import {
@@ -2380,7 +2381,9 @@ class ViewEditor_ extends React.Component<ViewEditorProps, ViewEditorState> {
                           )}
                           <div
                             className={
-                              studioCtx.dragInsertState() ? "DragInsertState" : ""
+                              studioCtx.dragInsertState()
+                                ? "DragInsertState"
+                                : ""
                             }
                           />
                         </div>
