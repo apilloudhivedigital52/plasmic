@@ -45,7 +45,6 @@ import { PreviewCtx } from "@/wab/client/components/live/PreviewCtx";
 import { makeFrameSizeMenu } from "@/wab/client/components/menus/FrameSizeMenu";
 import { OmnibarOverlay } from "@/wab/client/components/omnibar/OmnibarOverlay";
 import { confirm } from "@/wab/client/components/quick-modals";
-import { MiddlePane } from "@/wab/client/components/sidebar-contents/MiddlePane";
 import { OldSettingsTab } from "@/wab/client/components/sidebar-tabs/old-settings-tab";
 import { SettingsTab } from "@/wab/client/components/sidebar-tabs/SettingsTab";
 import {
@@ -54,6 +53,7 @@ import {
   StyleTab,
   StyleTabContext,
 } from "@/wab/client/components/sidebar-tabs/style-tab";
+import { MiddlePane } from "@/wab/client/components/studio/MiddlePane";
 import { providesSidebarPopupSetting } from "@/wab/client/components/style-controls/StyleComponent";
 import { TopBar } from "@/wab/client/components/top-bar";
 import { getContextMenuForFocusedTpl } from "@/wab/client/components/tpl-menu";
