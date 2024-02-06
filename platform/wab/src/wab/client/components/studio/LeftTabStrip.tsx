@@ -20,9 +20,11 @@ import ClocksvgIcon from "@/wab/client/plasmic/q_4_icons/icons/PlasmicIcon__Cloc
 import ComponentssvgIcon from "@/wab/client/plasmic/q_4_icons/icons/PlasmicIcon__Componentssvg";
 import DotsHorizontalCirclesvgIcon from "@/wab/client/plasmic/q_4_icons/icons/PlasmicIcon__DotsHorizontalCirclesvg";
 import DownloadsvgIcon from "@/wab/client/plasmic/q_4_icons/icons/PlasmicIcon__Downloadsvg";
+import EmojiHappysvgIcon from "@/wab/client/plasmic/q_4_icons/icons/PlasmicIcon__EmojiHappysvg";
 import FigmasvgIcon from "@/wab/client/plasmic/q_4_icons/icons/PlasmicIcon__Figmasvg";
 import HelpCirclesvgIcon from "@/wab/client/plasmic/q_4_icons/icons/PlasmicIcon__HelpCirclesvg";
 import PhotosvgIcon from "@/wab/client/plasmic/q_4_icons/icons/PlasmicIcon__Photosvg";
+import SpeakersvgIcon from "@/wab/client/plasmic/q_4_icons/icons/PlasmicIcon__Speakersvg";
 import WarningTrianglesvgIcon from "@/wab/client/plasmic/q_4_icons/icons/PlasmicIcon__WarningTrianglesvg";
 import { PlayerData } from "@/wab/client/studio-ctx/multiplayer-ctx";
 import { StudioCtx, useStudioCtx } from "@/wab/client/studio-ctx/StudioCtx";
@@ -238,6 +240,35 @@ Help
         },
       },
     },
+    coucou: {
+      type: "group",
+      icon: <EmojiHappysvgIcon />,
+      title: "Coucou",
+      items: {
+        sayCoucouPanel: {
+          type: "item",
+          tabKey: "sayCoucouPanel",
+          icon: <SpeakersvgIcon />,
+          label: "Panel",
+          cond: canViewTab("sayCoucouPanel"),
+        },
+        sayCoucouPanelMiddle: {
+          type: "item",
+          tabKey: "sayCoucouPanelMiddle",
+          icon: <SpeakersvgIcon />,
+          label: "Panel + Middle",
+          cond: canViewTab("sayCoucouPanelMiddle"),
+        },
+        sayCoucouMiddle: {
+          type: "item",
+          tabKey: "sayCoucouMiddle",
+          icon: <SpeakersvgIcon />,
+          label: "Middle",
+          cond: canViewTab("sayCoucouMiddle"),
+          tabShown: false,
+        },
+      },
+    },
   };
   const menu: Record<string, NavMenuItem | NavMenuGroup> = {
     outline: {
@@ -324,7 +355,9 @@ Help
                 if (studioCtx.leftTabKey === item.tabKey) {
                   studioCtx.switchLeftTab(undefined);
                 } else {
-                  studioCtx.switchLeftTab(item.tabKey);
+                  studioCtx.switchLeftTab(item.tabKey, {
+                    shown: item.tabShown,
+                  });
                 }
               }
               (() => {

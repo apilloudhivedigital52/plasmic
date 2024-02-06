@@ -11,6 +11,7 @@ import LeftComponentsPanel from "@/wab/client/components/sidebar/LeftComponentsP
 import LeftGeneralTokensPanel from "@/wab/client/components/sidebar/LeftGeneralTokensPanel";
 import LeftLintIssuesPanel from "@/wab/client/components/sidebar/LeftLintIssuesPanel";
 import LeftProjectSettingsPanel from "@/wab/client/components/sidebar/LeftProjectSettingsPanel";
+import { LeftSayCoucouPanel } from "@/wab/client/components/sidebar/LeftSayCoucouPanel";
 import LeftSplitsPanel from "@/wab/client/components/sidebar/LeftSplitsPanel";
 import { MixinsPanel } from "@/wab/client/components/sidebar/MixinControls";
 import { ProjectDependenciesPanel } from "@/wab/client/components/sidebar/ProjectDependencies";
@@ -153,13 +154,14 @@ const LeftPane = observer(function LeftPane(props: LeftPaneProps) {
             paneContainer={{
               props: {
                 className: "canvas-editor__left-pane auto-pointer-events",
-                style: !studioCtx.leftTabKey
-                  ? {
-                      display: "none",
-                    }
-                  : {
-                      width: studioCtx.leftPaneWidth,
-                    },
+                style:
+                  !studioCtx.leftTabKey || studioCtx.leftTabShown === false
+                    ? {
+                        display: "none",
+                      }
+                    : {
+                        width: studioCtx.leftPaneWidth,
+                      },
               },
 
               wrapChildren: (children) => (
@@ -191,6 +193,8 @@ const LeftPane = observer(function LeftPane(props: LeftPaneProps) {
                     {wrapTab("themes", <DefaultStylesPanel />)}
                     {wrapTab("images", <ImageAssetsPanel />)}
                     {wrapTab("fonts", <UserManagedFontsPanel />)}
+                    {wrapTab("sayCoucouPanel", <LeftSayCoucouPanel />)}
+                    {wrapTab("sayCoucouPanelMiddle", <LeftSayCoucouPanel />)}
 
                     {isLoggedIn &&
                       wrapTab("imports", <ProjectDependenciesPanel />)}

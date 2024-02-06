@@ -2212,6 +2212,14 @@ export class StudioCtx extends WithDbCtx {
     this._xLeftTabKey.set(key);
   }
 
+  private _xLeftTabShown = observable.box<boolean | undefined>();
+  get leftTabShown() {
+    return this._xLeftTabShown.get();
+  }
+  set leftTabShown(key: LeftTabKey | undefined) {
+    this._xLeftTabShown.set(key);
+  }
+
   private _xLastLeftTabKey: LeftTabKey = "outline";
   get lastLeftTabKey() {
     return this._xLastLeftTabKey;
@@ -2269,15 +2277,15 @@ export class StudioCtx extends WithDbCtx {
 
   switchLeftTab(
     tabKey: LeftTabKey | undefined,
-    opts?: { highlight?: boolean }
+    opts?: { highlight?: boolean; shown?: boolean }
   ) {
     if (tabKey) {
-      this.lastLeftTabKey = tabKey;
       localStorage.setItem(LEFT_TAB_KEY_LOCAL_STORAGE_KEY, tabKey);
     } else {
       localStorage.removeItem(LEFT_TAB_KEY_LOCAL_STORAGE_KEY);
     }
     this.leftTabKey = tabKey;
+    this.leftTabShown = opts?.shown;
     if (opts?.highlight) {
       this.highlightLeftPanel();
     }

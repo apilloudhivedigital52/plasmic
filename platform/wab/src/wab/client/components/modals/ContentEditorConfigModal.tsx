@@ -469,6 +469,12 @@ function leftTabKeyToLabel(key: LeftTabButtonKey) {
       return "Style presets";
     case "fonts":
       return "Custom fonts";
+    case "sayCoucouPanel":
+      return "Panel";
+    case "sayCoucouPanelMiddle":
+      return "Panel + Middle";
+    case "sayCoucouMiddle":
+      return "Middle";
     case "themes":
       return "Default styles";
     case "images":
