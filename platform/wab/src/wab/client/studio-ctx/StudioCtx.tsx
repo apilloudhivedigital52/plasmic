@@ -2216,7 +2216,7 @@ export class StudioCtx extends WithDbCtx {
   get leftTabShown() {
     return this._xLeftTabShown.get();
   }
-  set leftTabShown(key: LeftTabKey | undefined) {
+  set leftTabShown(key: boolean | undefined) {
     this._xLeftTabShown.set(key);
   }
 
