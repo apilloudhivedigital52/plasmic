@@ -318,6 +318,7 @@ module.exports = {
           jsx: true,
         },
         project: ["./platform/wab/tsconfig.json"],
+        tsconfigRootDir: __dirname,
       },
     },
   ],

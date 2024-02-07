@@ -1,4 +1,5 @@
 const BACKEND_ONLY = process.env["PM2_BACKEND_ONLY"];
+const BACKEND_MODE = process.env["PM2_BACKEND_MODE"];
 const WITH_HOSTING = process.env["PM2_WITH_HOSTING"];
 const WITH_DEDICATED_CODEGEN = process.env["PM2_WITH_DEDICATED_CODEGEN"];
 
@@ -62,7 +63,13 @@ module.exports = {
     {
       name: "backend",
       script: "yarn",
-      args: ["backend"],
+      args: [
+        BACKEND_MODE === "debug"
+          ? "backend:debug"
+          : BACKEND_MODE === "watch"
+          ? "backend:watch"
+          : "backend",
+      ],
       log_date_format: "HH:mm:ss.SSS",
       env: {
         debug: 1,
