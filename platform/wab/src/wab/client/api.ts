@@ -445,6 +445,7 @@ export function filteredApi(
   const whitelistedLocalStorageKeyPrefixes = [
     "plasmic.tours.",
     "plasmic.focused.",
+    "plasmic.leftTabKey",
     "plasmic.free-trial.",
     "plasmic.load-cache.",
   ];
@@ -467,7 +468,6 @@ export function filteredApi(
     "getLastBundleVersion",
     "getAppConfig",
     "getClip",
-    "findFreeVars",
     "readNavigatorClipboard",
     "uploadImageFile",
     "queryCopilot",
