@@ -590,6 +590,9 @@ export class StudioCtx extends WithDbCtx {
   private _xLeftTabKey: IObservableValue<LeftTabKey | undefined> =
     observable.box(undefined);
 
+  private _xLeftTabShown: IObservableValue<boolean | undefined> =
+    observable.box(undefined);
+
   readonly hostPageHtml: Promise<string>;
 
   constructor(args: StudioCtxArgs) {
@@ -2225,7 +2228,6 @@ export class StudioCtx extends WithDbCtx {
     this._xLeftTabKey.set(key);
   }
 
-  private _xLeftTabShown = observable.box<boolean | undefined>();
   get leftTabShown() {
     return this._xLeftTabShown.get();
   }
@@ -2297,9 +2299,15 @@ export class StudioCtx extends WithDbCtx {
       this.appCtx.api
         .addStorageItem(this.leftTabKeyLocalStorageKey(), tabKey)
         .catch((e) => console.error(e));
+      this.appCtx.api
+        .addStorageItem(this.leftTabShownLocalStorageKey(), opts?.shown)
+        .catch((e) => console.error(e));
     } else {
       this.appCtx.api
         .removeStorageItem(this.leftTabKeyLocalStorageKey())
+        .catch((e) => console.error(e));
+      this.appCtx.api
+        .removeStorageItem(this.leftTabShownLocalStorageKey())
         .catch((e) => console.error(e));
     }
     this.leftTabKey = tabKey;
@@ -2637,6 +2645,10 @@ export class StudioCtx extends WithDbCtx {
 
   private leftTabKeyLocalStorageKey = () => {
     return `plasmic.leftTabKey.${this.siteInfo.id}`;
+  };
+
+  private leftTabShownLocalStorageKey = () => {
+    return `plasmic.leftTabShown.${this.siteInfo.id}`;
   };
 
   /**
