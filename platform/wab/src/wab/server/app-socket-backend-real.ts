@@ -87,20 +87,36 @@ export function addSocketRoutes(app: express.Application, config: Config) {
   const projectsIo = new ProjectsSocket(config, app.get("name"));
 
   app.post("/api/v1/disconnect", (req, res) => {
-    const sessionId = req.body.sessionID as string;
-    projectsIo.disconnectSession(sessionId);
+    const sessionId = req.body?.sessionID as string | undefined;
+
+    if (sessionId) {
+      projectsIo.disconnectSession(sessionId);
+    }
+
     res.json({});
   });
 
   app.post("/api/v1/projects/broadcast", (req, res) => {
-    const payload = req.body as BroadcastPayload;
-    projectsIo.broadcast(payload);
+    const payload = req.body as BroadcastPayload | undefined;
+
+    if (payload) {
+      projectsIo.broadcast(payload);
+    }
+
     res.json({});
   });
 
   const cliInitIo = new InitSocket();
+
   app.post("/api/v1/cli/emit-token", (req, res) => {
-    cliInitIo.emit(req.body.email, req.body.initToken, req.body.authToken);
+    const email = req.body?.email as string | undefined;
+    const initToken = req.body?.initToken as string | undefined;
+    const authToken = req.body?.authToken as string | undefined;
+
+    if (email && initToken && authToken) {
+      cliInitIo.emit(email, initToken, authToken);
+    }
+
     res.json({});
   });
 
