@@ -17,6 +17,7 @@
     "pm2:watch": "cd platform/wab && yarn pm2:watch",
     "pm2:list": "cd platform/wab && yarn pm2:list",
     "pm2:stop": "cd platform/wab && yarn pm2:stop",
+    "pm2:stop-clean": "cd platform/wab && yarn pm2:stop-clean",
     "e2e": "cd platform/wab && yarn cypress open",
     "e2e:headless": "cd platform/wab && yarn cypress run",
     "local-canary": "yarn local-unpublish && lerna publish --canary --yes --include-merged-tags --no-git-tag-version --no-push --registry=http://localhost:4873 --force-publish",

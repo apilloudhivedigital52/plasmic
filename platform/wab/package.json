@@ -25,6 +25,7 @@
     "pm2:logs:backend": "npx pm2 logs backend",
     "pm2:list": "npx pm2 list",
     "pm2:stop": "npx pm2 stop all",
+    "pm2:stop-clean": "npx pm2 delete all",
     "start": "bash tools/dev-server.bash start",
     "ts-watch": "NODE_OPTIONS='--max-old-space-size=16384' tsc --noEmit --watch",
     "typecheck": "NODE_OPTIONS='--max-old-space-size=16384' tsc --noEmit",
