@@ -15,8 +15,6 @@
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/bower_components" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
-      <excludeFolder url="file://$MODULE_DIR$/build/js/node-deps" />
-      <excludeFolder url="file://$MODULE_DIR$/build/js/node_modules" />
       <excludeFolder url="file://$MODULE_DIR$/create-react-app-new" />
       <excludeFolder url="file://$MODULE_DIR$/deps" />
       <excludeFolder url="file://$MODULE_DIR$/gen" />
@@ -25,6 +23,7 @@
       <excludeFolder url="file://$MODULE_DIR$/trash" />
       <excludeFolder url="file://$MODULE_DIR$/watched" />
       <excludeFolder url="file://$MODULE_DIR$/.yalc" />
+      <excludeFolder url="file://$MODULE_DIR$/dev-build" />
     </content>
     <content url="file://$MODULE_DIR$/create-react-app-new/packages/react-scripts/config" />
     <content url="file://$MODULE_DIR$/create-react-app-new/packages/react-scripts/scripts" />
